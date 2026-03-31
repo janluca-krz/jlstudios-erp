@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model INVOICES {
+  IID        Int      @id
+  DT_CREATED DateTime @default(now()) @db.Timestamp(0)
+  AMMOUNT    Float
+}
+
+model customers {
+  CID        Int      @id @default(autoincrement())
+  VORNAME    String   @db.VarChar(255)
+  NACHNAME   String   @db.VarChar(255)
+  STRASSE    String   @db.VarChar(255)
+  ORT        String   @db.VarChar(255)
+  PLZ        Int
+  STEUER_ID  String   @db.VarChar(255)
+  DT_CREATED DateTime @default(now()) @db.Timestamp(0)
+  DT_UPDATED DateTime @default(dbgenerated("'0000-00-00 00:00:00'")) @db.Timestamp(0)
+}
+
+model stamp_times {
+  TID        Int      @id @default(autoincrement())
+  UUID       Int
+  start_time DateTime @db.DateTime(0)
+  stop_time  DateTime @db.DateTime(0)
+  DT_CREATED DateTime @default(now()) @db.Timestamp(0)
+}
+
+model user {
+  UUID       Int      @id @default(autoincrement())
+  VORNAME    String   @db.VarChar(255)
+  NACHNAME   String   @db.VarChar(255)
+  EMAIL      String   @db.VarChar(255)
+  PASSWORT   String   @db.VarChar(255)
+  FIRMA      String   @db.VarChar(255)
+  DT_CREATED DateTime @default(now()) @db.Timestamp(0)
+  DT_UPDATED DateTime @default(dbgenerated("'0000-00-00 00:00:00'")) @db.Timestamp(0)
+}
