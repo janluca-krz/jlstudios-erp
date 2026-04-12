@@ -1,5 +1,3 @@
-
-
 export class CreateUserDTO {
     VORNAME!: string;
     NACHNAME!: string;

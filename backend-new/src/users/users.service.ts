@@ -4,6 +4,8 @@ import { CreateUserDTO } from './dto/create-user.dto';
 import { CreateUser } from './actions/create-user';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { UpdateUser } from './actions/update-user';
+import { DeleteUser } from './actions/delete-user';
+import { deleteUserDTO } from './dto/delete-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -20,6 +22,11 @@ export class UsersService {
 
     async update(uuid: number, data: UpdateUserDTO) {
         const action = new UpdateUser(this.prisma);
+        return action.excecute(uuid, data);
+    }
+
+    async delete(uuid: number, data:deleteUserDTO) {
+        const action = new DeleteUser(this.prisma);
         return action.excecute(uuid, data);
     }
 }

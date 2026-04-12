@@ -6,7 +6,7 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Module({
   imports: [PrismaModule],
-  providers: [UsersService, PrismaService],
+  providers: [UsersService, PrismaService], //Added PrismaService to write Inject Data to SQL
   controllers: [UsersController],
 })
 export class UsersModule {}

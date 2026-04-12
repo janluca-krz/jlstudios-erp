@@ -38,7 +38,7 @@ model user {
   UUID       Int      @id @default(autoincrement())
   VORNAME    String   @db.VarChar(255)
   NACHNAME   String   @db.VarChar(255)
-  EMAIL      String   @db.VarChar(255)
+  EMAIL      String   @unique @db.VarChar(255)
   PASSWORT   String   @db.VarChar(255)
   FIRMA      String   @db.VarChar(255)
   DT_CREATED DateTime @default(now()) @db.Timestamp(0)
